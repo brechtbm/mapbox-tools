@@ -7,7 +7,7 @@ RUN apk add --update bash openssl g++ make sqlite-dev zlib-dev
 
 # install tippecanoe
 RUN wget https://github.com/mapbox/tippecanoe/archive/1.27.0.tar.gz && \
-    tar xzvf 1.27.0.tar.gz
+    tar xzvf 1.27.0.tar.gz && \
     cd tippecanoe-1.27.0
 
 RUN make && make install
