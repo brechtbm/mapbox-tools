@@ -10,7 +10,7 @@ By default, all commands are run inside the container's `/workdir` folder. If yo
 
 ### Tippecanoe
 
-`$ docker run -v $(pwd):/workdir stefda/mapbox-tools tippecanoe data/tiles.geojson`
+`$ docker run -v $(pwd):/workdir stefda/mapbox-tools tippecanoe -o data/coastline.mbtiles -zg data/coastline.geojson`
 
 Detailed api documentation for the tool is in the [mapbox/tippecanoe](https://github.com/mapbox/tippecanoe) repo.
  
