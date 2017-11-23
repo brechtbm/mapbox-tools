@@ -28,5 +28,6 @@ RUN apk --no-cache update && \
     apk --no-cache add curl jq
 
 ADD upload.sh /bin/upload
+RUN chmod +x /bin/upload
 
 WORKDIR /workdir
