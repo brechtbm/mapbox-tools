@@ -37,12 +37,13 @@ UPLOAD=$(curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-
 UPLOAD_ID=$(echo $UPLOAD | jq -r '.id')
 
 # query upload progress until 'done'
-PROGRESS_STRING='.'
-echo $PROGRESS_STRING
+echo "Processing..."
 
 DONE=0
 until [ "$DONE" -eq 1 ]; do
+	sleep 1
 	RESPONSE=$(curl -s "https://api.mapbox.com/uploads/v1/${MAPBOX_USERNAME}/${UPLOAD_ID}?access_token=${MAPBOX_TOKEN}")
 	DONE=$(echo ${RESPONSE} | jq '.progress')
-	if [ "$DONE" -eq 0 ]; then echo -en "\e[1A"; echo -e "\e[0K\r${PROGRESS_STRING}"; PROGRESS_STRING+='.'; sleep 1; else echo -en "\e[1A"; echo -e "\e[0K\rdone"; fi
 done
+
+echo "done"
